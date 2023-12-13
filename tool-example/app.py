@@ -1,6 +1,7 @@
 import os
 import sys
 from datasets import load_dataset
+import logging
 
 def download_and_store(dataset_name, output_folder):
     dataset = load_dataset(dataset_name)
@@ -12,7 +13,7 @@ def download_and_store(dataset_name, output_folder):
     for split in dataset.keys():
         dataset[split].to_csv(os.path.join(output_path, f"{split}.csv"))
 
-    print(f"Dataset '{dataset_name}' downloaded and stored in '{output_path}'.")
+    logging.info(f"Dataset '{dataset_name}' downloaded and stored in '{output_path}'.")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
